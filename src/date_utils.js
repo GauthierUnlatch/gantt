@@ -129,31 +129,33 @@ export default {
             date_a -
             date_b +
             (date_b.getTimezoneOffset() - date_a.getTimezoneOffset()) * 60000;
+
         seconds = milliseconds / 1000;
         minutes = seconds / 60;
         hours = minutes / 60;
         days = hours / 24;
-        // Calculate months across years
+
         let yearDiff = date_a.getFullYear() - date_b.getFullYear();
         let monthDiff = date_a.getMonth() - date_b.getMonth();
-        // calculate extra
-        monthDiff += (days % 30) / 30;
-
-        /* If monthDiff is negative, date_b is in an earlier month than
-        date_a and thus subtracted from the year difference in months */
         months = yearDiff * 12 + monthDiff;
-        /* If date_a's (e.g. march 1st) day of the month is smaller than date_b (e.g. february 28th),
-        adjust the month difference */
+
+        const daysInMonth = (d) =>
+            new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+
         if (date_a.getDate() < date_b.getDate()) {
             months--;
+            const prevMonth = new Date(date_a.getFullYear(), date_a.getMonth(), 0);
+            months +=
+                (prevMonth.getDate() - date_b.getDate() + date_a.getDate()) /
+                daysInMonth(prevMonth);
+        } else {
+            months +=
+                (date_a.getDate() - date_b.getDate()) /
+                daysInMonth(date_a);
         }
 
-        // Calculate years based on actual months
         years = months / 12;
-
-        if (!scale.endsWith('s')) {
-            scale += 's';
-        }
+        if (!scale.endsWith('s')) scale += 's';
 
         return (
             Math.round(
@@ -165,7 +167,7 @@ export default {
                     days,
                     months,
                     years,
-                }[scale] * 100,
+                }[scale] * 100
             ) / 100
         );
     },
