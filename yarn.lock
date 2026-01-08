@@ -642,11 +642,6 @@ flatted@^3.2.9:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.3.3.tgz#67c8fad95454a7c7abebf74bb78ee74a44023358"
   integrity sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg==
 
-frappe-gantt@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/frappe-gantt/-/frappe-gantt-1.0.4.tgz#efa40ceaa284fcf0ff3d4f9cf93d488d5000e37b"
-  integrity sha512-N94OP9ZiapaG5nzgCeZdxsKP8HD5aLVlH5sEHxSNZQnNKQ4BOn2l46HUD+KIE0LpYIterP7gIrFfkLNRuK0npQ==
-
 fsevents@~2.3.2, fsevents@~2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.3.tgz#cac6407785d03675a2a5e1a5305c697b347d90d6"
